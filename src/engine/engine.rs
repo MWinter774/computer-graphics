@@ -29,6 +29,15 @@ impl Engine {
                 gl::ClearColor(0.2, 0.3, 0.3, 1.0);
                 gl::Clear(gl::COLOR_BUFFER_BIT | gl::DEPTH_BUFFER_BIT);
             }
+
+            if frame_data
+                .input_system
+                .keyboard
+                .get_key_press_state(glfw::Key::Escape)
+                == glfw::Action::Press
+            {
+                window_should_close = true;
+            }
         }
         self.context.set_should_terminate(true);
     }

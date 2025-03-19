@@ -40,8 +40,8 @@ impl Window {
         }
         self.glfw_window
             .set_cursor_pos(self.width as f64 / 2.0, self.height as f64 / 2.0);
-        // self.glfw_window
-        //     .set_cursor_pos_callback(engine::input_system::mouse::mouse_movement_callback);
+        self.glfw_window
+            .set_cursor_pos_callback(engine::input_system::mouse::mouse_movement_callback);
     }
 
     pub fn swap_buffers(&mut self) {
@@ -62,9 +62,9 @@ impl Window {
         }
     }
 
-    // pub fn get_input_sytem(&self) -> pashbu_engine::input_system::InputSystem<'_> {
-    //     pashbu_engine::InputSystem::new(&self.glfw_window)
-    // }
+    pub fn get_input_sytem(&self) -> engine::input_system::InputSystem<'_> {
+        engine::InputSystem::new(&self.glfw_window)
+    }
 }
 
 fn framebuffer_size_callback(_glfw_window: &mut glfw::Window, width: i32, height: i32) {

@@ -2,7 +2,7 @@ use crate::engine;
 
 pub struct FrameData<'a> {
     pub delta_time: f64,
-    // pub input_system: pashbu_engine::InputSystem<'a>,
+    pub input_system: engine::InputSystem<'a>,
     pub messages: glfw::FlushedMessages<'a, (f64, glfw::WindowEvent)>,
 }
 
@@ -28,6 +28,10 @@ impl EngineContext {
         self.window.update_framebuffer_size();
     }
 
+    pub fn get_input_sytem(&self) -> engine::input_system::InputSystem<'_> {
+        self.window.get_input_sytem()
+    }
+
     fn swap_buffers_and_poll_events(&mut self) {
         self.window.swap_buffers();
 
@@ -47,7 +51,7 @@ impl EngineContext {
 
         FrameData {
             delta_time: self.delta_time,
-            // input_system: self.get_input_sytem(),
+            input_system: self.get_input_sytem(),
             messages: self.flush_messages(),
         }
     }
