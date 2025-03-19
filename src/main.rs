@@ -1,3 +1,5 @@
+#![deny(clippy::all)]
+
 use computer_graphics::engine;
 
 fn main() {
