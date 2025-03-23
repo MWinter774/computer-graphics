@@ -1,15 +1,11 @@
-use std::io::BufReader;
-
-use gdal::Dataset;
-
 pub struct GeoTiffModel {
-    ds: gdal::Dataset,
+    ds: gdal_win::Dataset,
 }
 
 impl GeoTiffModel {
     pub fn new(geo_tiff_file_path: &str) -> Self {
         Self {
-            ds: gdal::Dataset::open(geo_tiff_file_path).unwrap(),
+            ds: gdal_win::Dataset::open(geo_tiff_file_path).unwrap(),
         }
     }
 
